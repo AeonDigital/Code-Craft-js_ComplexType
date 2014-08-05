@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>ComplexType QUnit Tests</title>
+        <link rel="stylesheet" href="resources/qunit.css" />
+        
+        
+        <script src="resources/qunit.js"></script>
+        <script src="https://raw.githubusercontent.com/AeonDigital/Code-Craft-js_BasicTools/master/BasicTools.js"></script>
+        <script src="https://raw.githubusercontent.com/AeonDigital/Code-Craft-js_StringExtension/master/StringExtension.js"></script>
+        <script src="../ComplexType.js"></script>
+    </head>
+    <body>
+        <div id="qunit"></div>
+        <div id="qunit-fixture"></div>
+
+        <script>
+            // <![CDATA[
+
+            module('ComplexType');
+            var _ct = CodeCraft.ComplexType;
+
+
+            test('CreateNewType', function () {
+                // Tipo complexo que representa um numero de telefone para o brasil
+                var pNum = _ct.CreateNewType('Number', 'String',
+                                                    null, null, null, null,
+                                                    true, false, false, false, false,
+                                                    null, String.Pattern.Brasil.Phone);
+
+
+
+                equal(pNum.Name, 'Number', '');
+                equal(pNum.Type.Name, 'String', '');
+                equal(pNum.Length, 16, '');
+                equal(pNum.Min, null, '');
+                equal(pNum.Max, null, '');
+                equal(pNum.RefType, null, '');
+                equal(pNum.AllowSet, true, '');
+                equal(pNum.AllowNull, false, '');
+                equal(pNum.AllowEmpty, false, '');
+                equal(pNum.Unique, false, '');
+                equal(pNum.ReadOnly, false, '');
+                equal(pNum.Default, null, '');
+                equal(pNum.FormatSet, String.Pattern.Brasil.Phone, '');
+
+
+                equal(pNum.CheckValue('4833226655'), '(48) 3322.6655', '');
+                equal(pNum.CheckValue('48333666999'), '(48) 333.666.999', '');
+                equal(pNum.CheckValue('483336669aa'), undefined, '');
+            });
+
+
+            // ]]>
+        </script>
+    </body>
+</html>
