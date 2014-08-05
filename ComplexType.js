@@ -332,7 +332,7 @@ CodeCraft.ComplexType = new (function () {
                 val = (cType.FormatSet != null && cType.FormatSet.RemoveFormat != null) ? cType.FormatSet.RemoveFormat(val) : val;
 
                 // Se há uma verificação de formato disponível, verifica...
-                if (cType.FormatSet.Check != null && !cType.FormatSet.Check(val)) {
+                if (cType.FormatSet != null && cType.FormatSet.Check != null && !cType.FormatSet.Check(val)) {
                     isOK = false;
                     console.log('[InvalidValue] : Invalid Value ["' + val + '"] For ComplexType "' + cType.Name + '".');
                 }
