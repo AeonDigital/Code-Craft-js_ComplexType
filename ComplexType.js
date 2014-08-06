@@ -414,7 +414,7 @@ CodeCraft.ComplexType = new (function () {
         *
         * @memberof ComplexType
         *
-        * @param {String}                       parName                             Nome da coluna.
+        * @param {String}                       parName                             Nome do tipo.
         * @param {PrimitiveType}                parType                             Tipo de dado primitivo aceito.
         * @param {Integer}                      [parLength = null]                  Tamanho máximo para um campo do tipo String.
         * @param {Integer}                      [parMin = null]                     Valor mínimo aceito para um campo numérico.
