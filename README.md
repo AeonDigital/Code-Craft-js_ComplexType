@@ -50,6 +50,13 @@ var nType = CodeCraft.CreateNewType(parName, parType, parLength, parMin, parMax,
 * `CheckValue`                  : Verifica um valor informado frente as configurações do próprio objeto.
 
 
+#### Dependências
+
+As seguintes bibliotecas são necessárias :
+
+* `BasicTools`
+* `StringExtension`  [Opcional, porém, recomendável]
+
 
 **Importante**
 
