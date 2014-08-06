@@ -436,7 +436,7 @@ CodeCraft.ComplexType = new (function () {
 
 
             for (var it in _primitiveTypes) {
-                if (_primitiveTypes[it].Name == parType) {
+                if (_primitiveTypes[it].Name == parType || _primitiveTypes[it] == parType) {
                     Type = _primitiveTypes[it];
                 }
             }
