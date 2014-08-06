@@ -54,8 +54,8 @@ var nType = CodeCraft.CreateNewType(parName, parType, parLength, parMin, parMax,
 
 As seguintes bibliotecas são necessárias :
 
-* `BasicTools`
-* `StringExtension`  [Opcional, porém, recomendável]
+* [BasicTools](http://github.com/AeonDigital/Code-Craft-js_BasicTools)
+* [StringExtension](http://github.com/AeonDigital/Code-Craft-js_StringExtension) - Opcional, porém, recomendável.
 
 
 **Importante**
