@@ -5,10 +5,10 @@
 * @module ComplexType
 * @file JS ComplexType
 *
+* @requires BasicTools
+*
 * @author Rianna Cantarelli <rianna.aeon@gmail.com>
 */
-
-
 
 
 
@@ -18,7 +18,6 @@
 // Caso não exista, inicia objeto CodeCraft
 var CodeCraft = (CodeCraft || function () { });
 if(typeof(CodeCraft) === 'function') { CodeCraft = new CodeCraft(); };
-
 
 
 
