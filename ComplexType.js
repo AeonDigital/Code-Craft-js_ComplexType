@@ -9,7 +9,7 @@
 *
 * @author Rianna Cantarelli <rianna.aeon@gmail.com>
 */
-
+'use strict';
 
 
 
@@ -299,7 +299,7 @@ CodeCraft.ComplexType = new (function () {
     * @return {[undefined|Object]}
     */
     var _checkValue = function (val, cType) {
-        isOK = true;
+        var isOK = true;
 
 
         // Se não é permitido o set externo deste tipo ...
@@ -405,7 +405,7 @@ CodeCraft.ComplexType = new (function () {
     /**
     * OBJETO PÚBLICO QUE SERÁ EXPOSTO.
     */
-    var public = this.Control = {
+    var _public = this.Control = {
         /**
         * Cria um novo objeto "DataTableColumn".
         * 
@@ -556,5 +556,5 @@ CodeCraft.ComplexType = new (function () {
     };
 
 
-    return public;
+    return _public;
 });
