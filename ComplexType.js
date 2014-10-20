@@ -204,8 +204,8 @@ CodeCraft.ComplexType = new (function () {
                 }
                 return s.TryParse(v);
             },
-            Min: new Date(-8640000000000000),
-            Max: new Date(8640000000000000)
+            Min: new Date(-14831762400000),     // Mon Jan 01 1500 00:00:00
+            Max: new Date(32503687199999)       // Tue Dec 31 2999 23:59:59
         },
         {
             Name: 'String',
