@@ -194,6 +194,16 @@ CodeCraft.ComplexType = new (function () {
 
                 return v;
             },
+            ParseToString: function (v) {
+                var s = null;
+                for (var it in _primitiveTypes) {
+                    if (_primitiveTypes[it].Name == 'String') {
+                        s = _primitiveTypes[it];
+                        break;
+                    }
+                }
+                return s.TryParse(v);
+            },
             Min: new Date(-8640000000000000),
             Max: new Date(8640000000000000)
         },
