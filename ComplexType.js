@@ -312,10 +312,9 @@ CodeCraft.ComplexType = new (function () {
         var isOK = true;
 
 
-        // Se não é permitido o set externo deste tipo ...
+
+        // Se é permitido o set externo deste tipo ...
         if (cType.AllowSet) {
-
-
 
             // Corrige valores nulos para quando há um valor padrão.
             if (val == undefined || val == null) {
@@ -387,6 +386,17 @@ CodeCraft.ComplexType = new (function () {
                                 break;
                         }
                     }
+                }
+            }
+        }
+        else {
+            // Corrige valores nulos para quando há um valor padrão.
+            if (val == undefined || val == null) {
+                val = cType.Default;
+
+                // Verifica tratamento especial para formato Date
+                if (cType.Type.Name === 'Date' && cType.Default === 'new') {
+                    val = new Date();
                 }
             }
         }
