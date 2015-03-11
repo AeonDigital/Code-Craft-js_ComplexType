@@ -136,6 +136,10 @@ CodeCraft.ComplexType = new (function () {
                         case 'false': case 'no': case '0': case 'off': return false; break;
                     }
                 }
+                else if (typeof (v) === 'number') {
+                    if (v === 0) { return false; }
+                    else if (v === 1) { return true; }
+                }
 
                 return v;
             }
@@ -357,7 +361,7 @@ CodeCraft.ComplexType = new (function () {
                     }
                     else {
                         switch (cType.Type.Name) {
-                            // Verificação para String                       
+                            // Verificação para String                         
                             case 'String':
                                 // Havendo um formatador, executa-o
                                 val = (cType.FormatSet != null && cType.FormatSet.Format != null) ? cType.FormatSet.Format(val) : val;
@@ -370,7 +374,7 @@ CodeCraft.ComplexType = new (function () {
 
                                 break;
 
-                            // Verificação para Numerais e Date                      
+                            // Verificação para Numerais e Date                        
                             case 'Date':
                             case 'Byte':
                             case 'Short':
