@@ -128,21 +128,7 @@ CodeCraft.ComplexType = new (function () {
         {
             Name: 'Boolean',
             Validate: function (v) { return (typeof (v) === 'boolean') ? true : false; },
-            TryParse: function (v) {
-                if (typeof (v) === 'boolean') { return v; }
-                else if (typeof (v) === 'string') {
-                    switch (o.toLowerCase()) {
-                        case 'true': case 'yes': case '1': case 'on': return true; break;
-                        case 'false': case 'no': case '0': case 'off': return false; break;
-                    }
-                }
-                else if (typeof (v) === 'number') {
-                    if (v === 0) { return false; }
-                    else if (v === 1) { return true; }
-                }
-
-                return v;
-            }
+            TryParse: function (v) { return _bt.TryParse.ToBoolean(v); }
         },
         {
             Name: 'Byte',           // INTEGER 8 BITS
@@ -361,7 +347,7 @@ CodeCraft.ComplexType = new (function () {
                     }
                     else {
                         switch (cType.Type.Name) {
-                            // Verificação para String                         
+                            // Verificação para String                        
                             case 'String':
                                 // Havendo um formatador, executa-o
                                 val = (cType.FormatSet != null && cType.FormatSet.Format != null) ? cType.FormatSet.Format(val) : val;
@@ -374,7 +360,7 @@ CodeCraft.ComplexType = new (function () {
 
                                 break;
 
-                            // Verificação para Numerais e Date                        
+                            // Verificação para Numerais e Date                       
                             case 'Date':
                             case 'Byte':
                             case 'Short':
