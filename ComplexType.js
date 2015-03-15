@@ -167,7 +167,7 @@ CodeCraft.ComplexType = new (function () {
         },
         {
             Name: 'Double',         // FLOAT 64 BITS
-            Validate: function (v) { return _isNumber(v); },
+            Validate: function (v) { return _bt.IsNumber(v); },
             TryParse: function (v) { return _bt.TryParse.ToFloat(v); },
             Min: -9223372036854775296, // -9223372036854775808
             Max: 9223372036854775296   //  9223372036854775807
@@ -202,6 +202,7 @@ CodeCraft.ComplexType = new (function () {
             Validate: function (v) { return (typeof (v) === 'string') ? true : false; },
             TryParse: function (v) {
                 if (typeof (v) === 'string') { return v; }
+                else if (typeof (v) === 'boolean') { return (v) ? '1' : '0'; }
                 else if (Object.prototype.toString.call(v) === '[object Date]') {
                     var y = v.getFullYear().toString();
                     var M = (v.getMonth() + 1).toString();
@@ -218,7 +219,34 @@ CodeCraft.ComplexType = new (function () {
                     s = (s.length == 1) ? '0' + s : s;
 
                     v = y + '-' + M + '-' + d + ' ' + H + ':' + m + ':' + s;
-                }
+                }                
+
+                return v.toString();
+            }
+        },
+        {
+            Name: 'Text',
+            Validate: function (v) { return (typeof (v) === 'string') ? true : false; },
+            TryParse: function (v) {
+                if (typeof (v) === 'string') { return v; }
+                else if (typeof (v) === 'boolean') { return (v) ? '1' : '0'; }
+                else if (Object.prototype.toString.call(v) === '[object Date]') {
+                    var y = v.getFullYear().toString();
+                    var M = (v.getMonth() + 1).toString();
+                    var d = v.getDate().toString();
+                    var H = v.getHours().toString();
+                    var m = v.getMinutes().toString();
+                    var s = v.getSeconds().toString();
+
+                    // Adiciona 2 digitos a todas partes
+                    M = (M.length == 1) ? '0' + M : M;
+                    d = (d.length == 1) ? '0' + d : d;
+                    H = (H.length == 1) ? '0' + H : H;
+                    m = (m.length == 1) ? '0' + m : m;
+                    s = (s.length == 1) ? '0' + s : s;
+
+                    v = y + '-' + M + '-' + d + ' ' + H + ':' + m + ':' + s;
+                }                
 
                 return v.toString();
             }
@@ -347,8 +375,9 @@ CodeCraft.ComplexType = new (function () {
                     }
                     else {
                         switch (cType.Type.Name) {
-                            // Verificação para String                        
+                            // Verificação para String                         
                             case 'String':
+                            case 'Text':
                                 // Havendo um formatador, executa-o
                                 val = (cType.FormatSet != null && cType.FormatSet.Format != null) ? cType.FormatSet.Format(val) : val;
 
@@ -360,7 +389,7 @@ CodeCraft.ComplexType = new (function () {
 
                                 break;
 
-                            // Verificação para Numerais e Date                       
+                            // Verificação para Numerais e Date                        
                             case 'Date':
                             case 'Byte':
                             case 'Short':
@@ -511,6 +540,7 @@ CodeCraft.ComplexType = new (function () {
                             break;
 
                         case 'String':
+                        case 'Text':
                             parMin = null;
                             parMax = null;
                             if (parFormatSet != null && parFormatSet.MaxLength != null) {
