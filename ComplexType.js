@@ -313,8 +313,7 @@ CodeCraft.ComplexType = new (function () {
 
 
     /**
-    * A partir de todas as configurações para o objeto informado, verifica a validade do 
-    * valor informado.
+    * A partir de todas as configurações para o objeto informado, verifica a validade do valor informado.
     * Retorna "undefined" caso o valor seja inválido, ou retorna o valor devidamente formatado.
     * 
     * @function _checkValue
