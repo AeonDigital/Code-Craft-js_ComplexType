@@ -465,7 +465,7 @@ CodeCraft.ComplexType = new (function () {
         * @param {String}                       [parDefault = null]                 Valor inicial para uma variável deste tipo.
         * @param {DataFormat}                   [parFormatSet = null]               Objeto de definições para formatação.
         *
-        * @return {!ComplexType}
+        * @return {?ComplexType}
         */
         CreateNewType: function (parName, parType, parLength, parMin, parMax, parRefType,
                                             parAllowSet, parAllowNull, parAllowEmpty, parUnique, parReadOnly, parDefault, parFormatSet) {
