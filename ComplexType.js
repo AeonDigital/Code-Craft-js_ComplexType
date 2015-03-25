@@ -219,7 +219,7 @@ CodeCraft.ComplexType = new (function () {
                     s = (s.length == 1) ? '0' + s : s;
 
                     v = y + '-' + M + '-' + d + ' ' + H + ':' + m + ':' + s;
-                }                
+                }
 
                 return v.toString();
             }
@@ -246,7 +246,7 @@ CodeCraft.ComplexType = new (function () {
                     s = (s.length == 1) ? '0' + s : s;
 
                     v = y + '-' + M + '-' + d + ' ' + H + ':' + m + ':' + s;
-                }                
+                }
 
                 return v.toString();
             }
@@ -374,21 +374,24 @@ CodeCraft.ComplexType = new (function () {
                     }
                     else {
                         switch (cType.Type.Name) {
-                            // Verificação para String                         
+                            // Verificação para String                          
                             case 'String':
                             case 'Text':
-                                // Havendo um formatador, executa-o
-                                val = (cType.FormatSet != null && cType.FormatSet.Format != null) ? cType.FormatSet.Format(val) : val;
 
                                 // Verifica tamanho da mesma.
                                 if (cType.Length != null && val.length > cType.Length) {
                                     isOK = false;
                                     console.log('[MaxLengthExceeded] : Max Length Exceeded For ComplexType "' + cType.Name + '", Value ["' + val + '"].');
                                 }
+                                else {
+                                    // Havendo um formatador, executa-o
+                                    val = (cType.FormatSet != null && cType.FormatSet.Format != null) ? cType.FormatSet.Format(val) : val;
+                                }
+
 
                                 break;
 
-                            // Verificação para Numerais e Date                        
+                            // Verificação para Numerais e Date                         
                             case 'Date':
                             case 'Byte':
                             case 'Short':
