@@ -173,6 +173,13 @@ CodeCraft.ComplexType = new (function () {
             Max: 9223372036854775296   //  9223372036854775807
         },
         {
+            Name: 'Decimal',        // DECIMAL [10,4]
+            Validate: function (v) { return _bt.IsNumber(v); },
+            TryParse: function (v) { return _bt.TryParse.ToFloat(v); },
+            Min: -9223372036854775296, // -9223372036854775808
+            Max: 9223372036854775296   //  9223372036854775807
+        },
+        {
             Name: 'Date',
             Validate: function (v) { return (Object.prototype.toString.call(v) === '[object Date]') ? true : false; },
             TryParse: function (v) {
