@@ -298,6 +298,36 @@ CodeCraft.ComplexType = new (function () {
 
 
 
+    /**
+    * Coleção de pseudo-formatos, usados para transformações simples.
+    *
+    * @type {DataFormat[]}
+    */
+    var PseudoFormats = {
+        Lower: {
+            Mask: null,
+            RegExp: null,
+            MinLength: null,
+            MaxLength: null,
+            Check: function (v) { return v; },
+            Format: function (v) { return v.toLowerCase(); },
+            RemoveFormat: null
+        },
+        Upper: {
+            Mask: null,
+            RegExp: null,
+            MinLength: null,
+            MaxLength: null,
+            Check: function (v) { return v; },
+            Format: function (v) { return v.toUpperCase(); },
+            RemoveFormat: null
+        }
+    };
+
+
+
+
+
 
 
 
@@ -552,8 +582,16 @@ CodeCraft.ComplexType = new (function () {
                         case 'Text':
                             parMin = null;
                             parMax = null;
-                            if (parFormatSet != null && parFormatSet.MaxLength != null) {
-                                parLength = parFormatSet.MaxLength;
+
+                            if(parFormatSet != null) {
+                                
+                                if((typeof (parFormatSet) === 'string') && (parFormatSet.toLowerCase() == 'lower' || parFormatSet.toLowerCase() == 'upper')) {
+                                    parFormatSet = PseudoFormats[parFormatSet];
+                                }
+
+                                if (parFormatSet.MaxLength != null) {
+                                    parLength = parFormatSet.MaxLength;
+                                }
                             }
 
                             break;
