@@ -345,7 +345,7 @@ CodeCraft.ComplexType = new (function () {
                 val = cType.Default;
 
                 // Verifica tratamento especial para formato Date
-                if (cType.Type.Name === 'Date' && cType.Default === 'new') {
+                if (cType.Type.Name === 'Date' && cType.Default.toLowerCase() === 'now()') {
                     val = new Date();
                 }
             }
@@ -381,7 +381,7 @@ CodeCraft.ComplexType = new (function () {
                     }
                     else {
                         switch (cType.Type.Name) {
-                            // Verificação para String                          
+                            // Verificação para String                            
                             case 'String':
                             case 'Text':
 
@@ -398,7 +398,7 @@ CodeCraft.ComplexType = new (function () {
 
                                 break;
 
-                            // Verificação para Numerais e Date                         
+                            // Verificação para Numerais e Date                           
                             case 'Date':
                             case 'Byte':
                             case 'Short':
@@ -423,7 +423,7 @@ CodeCraft.ComplexType = new (function () {
                 val = cType.Default;
 
                 // Verifica tratamento especial para formato Date
-                if (cType.Type.Name === 'Date' && cType.Default === 'new') {
+                if (cType.Type.Name === 'Date' && cType.Default.toLowerCase() === 'now()') {
                     val = new Date();
                 }
             }
@@ -573,6 +573,12 @@ CodeCraft.ComplexType = new (function () {
                         case 'Float':
                         case 'Double':
                             parLength = null;
+
+                            if (Type.Name == 'Date') {
+                                if (parMin != null && parMin.toLowerCase() == 'now()') { parMin = new Date(); }
+                                if (parMax != null && parMax.toLowerCase() == 'now()') { parMax = new Date(); }
+                            }
+
                             parMin = (parMin != null && parMin >= Type.Min) ? parMin : Type.Min;
                             parMax = (parMax != null && parMax <= Type.Max) ? parMax : Type.Max;
 

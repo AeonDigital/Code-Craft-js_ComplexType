@@ -49,6 +49,42 @@
                 equal(pNum.CheckValue('4833226655'), '(48) 3322.6655', '');
                 equal(pNum.CheckValue('48333666999'), '(48) 333.666.999', '');
                 equal(pNum.CheckValue('483336669aa'), undefined, '');
+
+
+
+
+
+                // Tipo complexo que representa um numero de telefone para o brasil
+                var pDate = _ct.CreateNewType('DataTeste', 'Date',
+                                                    null, 'now()', null, null,
+                                                    true, false, false, false, false,
+                                                    null, null);
+
+
+
+                equal(pDate.Name, 'DataTeste', '');
+                equal(pDate.Type.Name, 'Date', '');
+                equal(pDate.Length, null, '');
+                equal(pDate.RefType, null, '');
+                equal(pDate.AllowSet, true, '');
+                equal(pDate.AllowNull, false, '');
+                equal(pDate.AllowEmpty, false, '');
+                equal(pDate.Unique, false, '');
+                equal(pDate.ReadOnly, false, '');
+                equal(pDate.Default, null, '');
+                equal(pDate.FormatSet, null, '');
+
+                
+                // Data que deve passar pois está 1 minuto alem do limite definido
+                var d1 = new Date();
+                d1.setMinutes(d1.getMinutes() + 1);
+                equal(pDate.CheckValue(d1), d1, '');
+
+                
+                // Data que deve falhar pois está 1 minuto atrazado em relação ao limite definido
+                var d1 = new Date();
+                d1.setMinutes(d1.getMinutes() - 1);
+                equal(pDate.CheckValue(d1), undefined, '');
             });
 
 
