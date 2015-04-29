@@ -613,8 +613,8 @@ CodeCraft.ComplexType = new (function () {
                             parLength = null;
 
                             if (Type.Name == 'Date') {
-                                if (parMin != null && parMin.toLowerCase() == 'now()') { parMin = new Date(); }
-                                if (parMax != null && parMax.toLowerCase() == 'now()') { parMax = new Date(); }
+                                if (parMin != null && parMin.toString().toLowerCase() == 'now()') { parMin = new Date(); }
+                                if (parMax != null && parMax.toString().toLowerCase() == 'now()') { parMax = new Date(); }
                             }
 
                             parMin = (parMin != null && parMin >= Type.Min) ? parMin : Type.Min;
